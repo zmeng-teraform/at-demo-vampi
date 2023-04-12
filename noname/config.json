@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "applicationId": "fb511025-9157-4694-8f36-a556e4cbab23",
+  "applicationId": "8cb54cb9-33c6-4f64-83af-9a50cd96b042",
   "host": "http://host.docker.internal:5002",
   "sources": [
     {
