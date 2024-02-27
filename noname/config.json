@@ -4,10 +4,11 @@
   "host": "http://host.docker.internal:5002",
   "sources": [
     {
-      "name": "Vampi-spec",
+      "name": "OpenAPI spec",
       "openApi": {
         "sourcePath": "/openapi_specs/openapi3.yml"
-      }
+      },
+      "auth_mappings": []
     }
   ],
   "auths": [
@@ -64,7 +65,7 @@
         }
       },
       {
-        "name": "Admin",
+        "name": "Admin User",
         "type": "postman",
         "data": {
           "collection": "{\"info\":{\"_postman_id\":\"8ccee14c-3586-4f69-88a1-339b28bbdac7\",\"name\":\"VAMPI Login Admin\",\"schema\":\"https://schema.getpostman.com/json/collection/v2.1.0/collection.json\",\"_exporter_id\":\"20336086\"},\"item\":[{\"name\":\"Login to VAmPI\",\"request\":{\"method\":\"POST\",\"header\":[],\"body\":{\"mode\":\"raw\",\"raw\":\"{\\n  \\\"username\\\": \\\"admin\\\",\\n  \\\"password\\\": \\\"pass1\\\"\\n}\",\"options\":{\"raw\":{\"language\":\"json\"}}},\"url\":{\"raw\":\"http://host.docker.internal:5002/users/v1/login\",\"host\":[\"http://host.docker.internal:5002\"],\"path\":[\"users\",\"v1\",\"login\"]}},\"response\":[]}],\"event\":[{\"listen\":\"prerequest\",\"script\":{\"type\":\"text/javascript\",\"exec\":[\"\"]}},{\"listen\":\"test\",\"script\":{\"type\":\"text/javascript\",\"exec\":[\"\"]}}],\"variable\":[{\"key\":\"vampiURL\",\"value\":\"http://host.docker.internal:5002\",\"type\":\"default\"}]}",
