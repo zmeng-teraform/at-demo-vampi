@@ -65,7 +65,7 @@
         }
       },
       {
-        "name": "User 2",
+        "name": "User 2 ",
         "type": "postman",
         "data": {
           "collection": "{\"info\":{\"_postman_id\":\"132909ea-9e52-42d4-938a-c0c83d19c020\",\"name\":\"VAMPI Login User2\",\"schema\":\"https://schema.getpostman.com/json/collection/v2.1.0/collection.json\",\"_exporter_id\":\"20336086\"},\"item\":[{\"name\":\"Login to VAmPI\",\"request\":{\"method\":\"POST\",\"header\":[],\"body\":{\"mode\":\"raw\",\"raw\":\"{\\n  \\\"username\\\": \\\"name2\\\",\\n  \\\"password\\\": \\\"pass2\\\"\\n}\",\"options\":{\"raw\":{\"language\":\"json\"}}},\"url\":{\"raw\":\"http://host.docker.internal:5002/users/v1/login\",\"host\":[\"http://host.docker.internal:5002\"],\"path\":[\"users\",\"v1\",\"login\"]}},\"response\":[]}],\"event\":[{\"listen\":\"prerequest\",\"script\":{\"type\":\"text/javascript\",\"exec\":[\"\"]}},{\"listen\":\"test\",\"script\":{\"type\":\"text/javascript\",\"exec\":[\"\"]}}],\"variable\":[{\"key\":\"vampiURL\",\"value\":\"http://host.docker.internal:5002\",\"type\":\"default\"}]}",
