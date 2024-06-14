@@ -1,10 +1,10 @@
 {
   "version": "1.1.0",
-  "applicationId": "0a997357-7c4d-4ee8-9772-dade6d664501",
+  "applicationId": "838976d5-0f4c-47c4-b7c1-3780b7ad8c19",
   "host": "http://host.docker.internal:5002",
   "sources": [
     {
-      "name": "OpenAPI spec",
+      "name": "Vampi Spec",
       "openApi": {
         "sourcePath": "/openapi_specs/openapi3.yml"
       },
@@ -22,6 +22,28 @@
           "key": "Authorization"
         }
       ]
+    },
+    {
+      "name": "User 1",
+      "role": "reader / writer",
+      "mappings": [
+        {
+          "type": "header",
+          "value": "Bearer {{User 1}}",
+          "key": "Authorization"
+        }
+      ]
+    },
+    {
+      "name": "User 2",
+      "role": "reader / writer",
+      "mappings": [
+        {
+          "type": "header",
+          "value": "Bearer {{User 2}}",
+          "key": "Authorization"
+        }
+      ]
     }
   ],
   "app": {
@@ -31,6 +53,22 @@
         "type": "postman",
         "data": {
           "collection": "{\"info\":{\"_postman_id\":\"8ccee14c-3586-4f69-88a1-339b28bbdac7\",\"name\":\"VAMPI Login Admin\",\"schema\":\"https://schema.getpostman.com/json/collection/v2.1.0/collection.json\",\"_exporter_id\":\"20336086\"},\"item\":[{\"name\":\"Login to VAmPI\",\"request\":{\"method\":\"POST\",\"header\":[],\"body\":{\"mode\":\"raw\",\"raw\":\"{\\n  \\\"username\\\": \\\"admin\\\",\\n  \\\"password\\\": \\\"pass1\\\"\\n}\",\"options\":{\"raw\":{\"language\":\"json\"}}},\"url\":{\"raw\":\"http://host.docker.internal:5002/users/v1/login\",\"host\":[\"http://host.docker.internal:5002\"],\"path\":[\"users\",\"v1\",\"login\"]}},\"response\":[]}],\"event\":[{\"listen\":\"prerequest\",\"script\":{\"type\":\"text/javascript\",\"exec\":[\"\"]}},{\"listen\":\"test\",\"script\":{\"type\":\"text/javascript\",\"exec\":[\"\"]}}],\"variable\":[{\"key\":\"vampiURL\",\"value\":\"http://host.docker.internal:5002\",\"type\":\"default\"}]}",
+          "sourceBody": "$.auth_token"
+        }
+      },
+      {
+        "name": "User 1",
+        "type": "postman",
+        "data": {
+          "collection": "{\"info\":{\"_postman_id\":\"e26ccd7c-f4f6-4091-a914-6963ff8f04e7\",\"name\":\"VAMPI Login User1\",\"schema\":\"https://schema.getpostman.com/json/collection/v2.1.0/collection.json\",\"_exporter_id\":\"20336086\"},\"item\":[{\"name\":\"Login to VAmPI\",\"request\":{\"method\":\"POST\",\"header\":[],\"body\":{\"mode\":\"raw\",\"raw\":\"{\\n  \\\"username\\\": \\\"name1\\\",\\n  \\\"password\\\": \\\"pass1\\\"\\n}\",\"options\":{\"raw\":{\"language\":\"json\"}}},\"url\":{\"raw\":\"http://host.docker.internal:5002/users/v1/login\",\"host\":[\"http://host.docker.internal:5002\"],\"path\":[\"users\",\"v1\",\"login\"]}},\"response\":[]}],\"event\":[{\"listen\":\"prerequest\",\"script\":{\"type\":\"text/javascript\",\"exec\":[\"\"]}},{\"listen\":\"test\",\"script\":{\"type\":\"text/javascript\",\"exec\":[\"\"]}}],\"variable\":[{\"key\":\"vampiURL\",\"value\":\"http://host.docker.internal:5002\",\"type\":\"default\"}]}",
+          "sourceBody": "$.auth_token"
+        }
+      },
+      {
+        "name": "User 2",
+        "type": "postman",
+        "data": {
+          "collection": "{\"info\":{\"_postman_id\":\"132909ea-9e52-42d4-938a-c0c83d19c020\",\"name\":\"VAMPI Login User2\",\"schema\":\"https://schema.getpostman.com/json/collection/v2.1.0/collection.json\",\"_exporter_id\":\"20336086\"},\"item\":[{\"name\":\"Login to VAmPI\",\"request\":{\"method\":\"POST\",\"header\":[],\"body\":{\"mode\":\"raw\",\"raw\":\"{\\n  \\\"username\\\": \\\"name2\\\",\\n  \\\"password\\\": \\\"pass2\\\"\\n}\",\"options\":{\"raw\":{\"language\":\"json\"}}},\"url\":{\"raw\":\"http://host.docker.internal:5002/users/v1/login\",\"host\":[\"http://host.docker.internal:5002\"],\"path\":[\"users\",\"v1\",\"login\"]}},\"response\":[]}],\"event\":[{\"listen\":\"prerequest\",\"script\":{\"type\":\"text/javascript\",\"exec\":[\"\"]}},{\"listen\":\"test\",\"script\":{\"type\":\"text/javascript\",\"exec\":[\"\"]}}],\"variable\":[{\"key\":\"vampiURL\",\"value\":\"http://host.docker.internal:5002\",\"type\":\"default\"}]}",
           "sourceBody": "$.auth_token"
         }
       }
