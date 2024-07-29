@@ -1,10 +1,10 @@
 {
   "version": "1.1.0",
-  "applicationId": "137d618c-7c4c-4f3b-b495-aa8aff6ad075",
+  "applicationId": "6c33a3b0-bba9-4d60-a80e-79cca8f7aa20",
   "host": "http://host.docker.internal:5002",
   "sources": [
     {
-      "name": "Vampi",
+      "name": "OAS",
       "openApi": {
         "sourcePath": "/openapi_specs/openapi3.yml"
       },
@@ -35,7 +35,7 @@
       ]
     },
     {
-      "name": "User 2",
+      "name": "USer 2",
       "role": "reader / writer",
       "mappings": [
         {
