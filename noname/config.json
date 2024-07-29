@@ -1,12 +1,12 @@
 {
   "version": "1.1.0",
-  "applicationId": "6c33a3b0-bba9-4d60-a80e-79cca8f7aa20",
+  "applicationId": "b7067040-2990-48c8-b395-1446eef211ad",
   "host": "http://host.docker.internal:5002",
   "sources": [
     {
       "name": "OAS",
       "openApi": {
-        "sourcePath": "/openapi_specs/openapi3.yml"
+        "sourcePath": "/openapi_specs/openapi3.yml "
       },
       "auth_mappings": []
     }
@@ -30,17 +30,6 @@
         {
           "type": "header",
           "value": "Bearer {{User 1}}",
-          "key": "Authorization"
-        }
-      ]
-    },
-    {
-      "name": "USer 2",
-      "role": "reader / writer",
-      "mappings": [
-        {
-          "type": "header",
-          "value": "Bearer {{User 2}}",
           "key": "Authorization"
         }
       ]
