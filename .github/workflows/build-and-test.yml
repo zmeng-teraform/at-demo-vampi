@@ -41,6 +41,7 @@ jobs:
           --test-group-id=62f5921c-d200-4f6f-a104-29674ad30a94
           --branch-name=${{ github. head_ref || github. ref_name }}
           --severity-threshold=none
+          --analyze
   deploy:
     needs: scan 
     runs-on: ubuntu-latest 
