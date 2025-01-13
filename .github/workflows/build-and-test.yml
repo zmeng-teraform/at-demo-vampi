@@ -28,6 +28,15 @@ jobs:
           username: ${{ secrets.ACTIVE_REGISTRY_USER }} 
           password: ${{ secrets.ACTIVE_REGISTRY_PASSWORD }}
       
+      - name: Debug PWD
+          run: |
+            echo "Current Directory:"
+            echo $(pwd)
+            echo "Contents of Current Directory:"
+            ls -la
+            cd noname
+            ls -la
+            
       - name: Active Testing Scan
         run: >
           docker run 
