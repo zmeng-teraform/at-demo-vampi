@@ -42,15 +42,6 @@ jobs:
           --branch-name=${{ github. head_ref || github. ref_name }}
           --severity-threshold=none
           --analyze
-
-      - name: Debug PWD
-        run: |
-          echo "Current Directory:"
-          echo $(pwd)
-          echo "Contents of Current Directory:"
-          ls -la
-          cd noname
-          ls -la
   
   deploy:
     needs: scan 
