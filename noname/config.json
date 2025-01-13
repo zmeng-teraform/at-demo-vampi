@@ -1,10 +1,10 @@
 {
   "version": "1.1.0",
-  "applicationId": "7ffba410-9b18-43cc-ae8c-aec48bc1a05a",
+  "applicationId": "9ad4cbbd-0071-48c6-95f2-302d2793a5bb",
   "host": "http://host.docker.internal:5002",
   "sources": [
     {
-      "name": "OAS",
+      "name": "Spec",
       "openApi": {
         "sourcePath": "/openapi_specs/openapi3.yml"
       },
