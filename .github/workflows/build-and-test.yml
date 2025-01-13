@@ -28,15 +28,6 @@ jobs:
           username: ${{ secrets.ACTIVE_REGISTRY_USER }} 
           password: ${{ secrets.ACTIVE_REGISTRY_PASSWORD }}
       
-      - name: Debug PWD
-          run: |
-            echo "Current Directory:"
-            echo $(pwd)
-            echo "Contents of Current Directory:"
-            ls -la
-            cd noname
-            ls -la
-            
       - name: Active Testing Scan
         run: >
           docker run 
@@ -51,6 +42,16 @@ jobs:
           --branch-name=${{ github. head_ref || github. ref_name }}
           --severity-threshold=none
           --analyze
+
+      - name: Debug PWD
+        run: |
+          echo "Current Directory:"
+          echo $(pwd)
+          echo "Contents of Current Directory:"
+          ls -la
+          cd noname
+          ls -la
+  
   deploy:
     needs: scan 
     runs-on: ubuntu-latest 
