@@ -1,4 +1,4 @@
-name: Build pipeline with security test
+name: Vampi build pipeline with security test
 on:
   push:
   repository_dispatch:
@@ -48,4 +48,4 @@ jobs:
     runs-on: ubuntu-latest 
     steps:
       - name: echo
-        run: echo Security scan passed, deploying to production
+        run: echo Vampi security scan passed, deploying to production
