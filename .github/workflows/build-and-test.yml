@@ -32,20 +32,21 @@ jobs:
           username: ${{ secrets.ACTIVE_REGISTRY_USER }}         # Docker registry username from secrets
           password: ${{ secrets.ACTIVE_REGISTRY_PASSWORD }}     # Docker registry password from secrets
 
+      # Run Active Testing scan using the CLI from the container registry
       - name: Active Testing Scan
         run: >
           docker run 
-          --add-host=host.docker.internal:host-gateway         # Enable host access from container
-          -e ACTIVE_CONFIG_FILE_PATH=/noname/config.json       # Path to Active config
-          -v $(pwd)/noname:/noname                             # Mount config volume
-          -v $(pwd)/openapi_specs:/openapi_specs               # Mount OpenAPI specs volume
+          --add-host=host.docker.internal:host-gateway 
+          -e ACTIVE_CONFIG_FILE_PATH=/noname/config.json 
+          -v $(pwd)/noname:/noname 
+          -v $(pwd)/openapi_specs:/openapi_specs 
           us-central1-docker.pkg.dev/noname-artifacts/nns-docker/active-cli:$(curl -k ${{secrets.ACTIVE_API_URL}}/backend/version) scan 
-          --api-url=${{ secrets.ACTIVE_API_URL }}              # Active backend API URL
-          --api-token=${{ secrets.ACTIVE_API_TOKEN }}          # Active API auth token
-          --test-group-id=62f5921c-d200-4f6f-a104-29674ad30a94 # Predefined test group
-          --branch-name=${{ github.head_ref || github.ref_name }}  # Use current branch name
-          --severity-threshold=high                            # Fail on high-severity issues or worse
-          --analyze                                             # Run advanced analysis
+          --api-url=${{ secrets.ACTIVE_API_URL }} 
+          --api-token=${{ secrets.ACTIVE_API_TOKEN }} 
+          --test-group-id=62f5921c-d200-4f6f-a104-29674ad30a94
+          --branch-name=${{ github.head_ref || github.ref_name }}
+          --severity-threshold=high
+          --analyze
 
   deploy:
     needs: scan                      # Only run if scan job passes
