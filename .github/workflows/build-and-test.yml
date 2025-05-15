@@ -19,7 +19,7 @@ jobs:
 
       - name: Test VAmPI
         run: sleep 5 && curl http://localhost:5002/ --retry 10 --retry-delay 1 
-        # Wait for service to start, then ping the API to ensure it's up (retry up to 10 times)
+        # Wait for service to start, then ping the API to ensure it's up
 
       - name: Createdb
         run: curl http://localhost:5002/createdb 
@@ -29,10 +29,14 @@ jobs:
         uses: docker/login-action@v1 
         with:
           registry: us-central1-docker.pkg.dev/noname-artifacts/nns-docker
-          username: ${{ secrets.ACTIVE_REGISTRY_USER }}         # Docker registry username from secrets
-          password: ${{ secrets.ACTIVE_REGISTRY_PASSWORD }}     # Docker registry password from secrets
+          username: ${{ secrets.ACTIVE_REGISTRY_USER }}
+          password: ${{ secrets.ACTIVE_REGISTRY_PASSWORD }}
 
-      # Run Active Testing scan using the CLI from the container registry
+      - name: Pull active-cli image only if not present
+        run: |
+          docker image inspect us-central1-docker.pkg.dev/noname-artifacts/nns-docker/active-cli:latest || \
+          docker pull us-central1-docker.pkg.dev/noname-artifacts/nns-docker/active-cli:latest
+
       - name: Active Testing Scan
         run: >
           docker run 
@@ -40,7 +44,7 @@ jobs:
           -e ACTIVE_CONFIG_FILE_PATH=/noname/config.json 
           -v $(pwd)/noname:/noname 
           -v $(pwd)/openapi_specs:/openapi_specs 
-          us-central1-docker.pkg.dev/noname-artifacts/nns-docker/active-cli:$(curl -k ${{secrets.ACTIVE_API_URL}}/backend/version) scan 
+          us-central1-docker.pkg.dev/noname-artifacts/nns-docker/active-cli:latest scan 
           --api-url=${{ secrets.ACTIVE_API_URL }} 
           --api-token=${{ secrets.ACTIVE_API_TOKEN }} 
           --test-group-id=699c4b25-b4ca-47e5-8c95-23c3a0afa990
@@ -49,10 +53,9 @@ jobs:
           --analyze
 
   deploy:
-    needs: scan                      # Only run if scan job passes
+    needs: scan
     runs-on: ubuntu-latest
 
     steps:
       - name: echo
         run: echo Vampi security scan passed, deploying to production
-        # Placeholder for deployment; just an echo statement for now
