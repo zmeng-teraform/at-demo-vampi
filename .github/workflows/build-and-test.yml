@@ -18,11 +18,11 @@ jobs:
         run: docker compose up -d  # Start VAmPI API using Docker Compose in detached mode
 
       - name: Test VAmPI
-        run: sleep 5 && curl http://localhost:5002/ --retry 10 --retry-delay 1 
+        run: sleep 5 && curl http://localhost:5001/ --retry 10 --retry-delay 1 
         # Wait for service to start, then ping the API to ensure it's up (retry up to 10 times)
 
       - name: Createdb
-        run: curl http://localhost:5002/createdb 
+        run: curl http://localhost:5001/createdb 
         # Initialize VAmPI with test data
 
       - name: Docker login
