@@ -1,7 +1,7 @@
 {
   "version": "1.1.0",
   "applicationId": "e8731ad9-df3c-4fb6-ad5d-d8c80572e92b",
-  "host": "http://host.docker.internal:5002",
+  "host": "http://host.docker.internal:5001",
   "sources": [
     {
       "name": "Spec",
