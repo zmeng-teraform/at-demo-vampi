@@ -71,12 +71,15 @@ class User(db.Model):
         return fin_query
             
     @staticmethod
-    def register_user(username, password, email, admin=False):
-        new_user = User(username=username, password=password, email=email, admin=admin)
-        randomint = str(randrange(100))
-        new_user.books = [Book(book_title="bookTitle" + randomint, secret_content="secret for bookTitle" + randomint)]
-        db.session.add(new_user)
-        db.session.commit()
+    def get_user(username): # SQLi Injection 
+        user_query = f"SELECT * FROM users WHERE username = '{username}'"
+        query = db.session.execute(text(user_query))
+        ret = query.fetchone()
+        if ret:
+            fin_query = '{"username": "%s", "email": "%s"}' % (ret[1], ret[3])
+        else:
+            fin_query = None
+        return fin_query
 
     @staticmethod
     def delete_user(username):
