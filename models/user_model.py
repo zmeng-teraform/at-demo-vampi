@@ -66,7 +66,13 @@ class User(db.Model):
         return [User.json_debug(user) for user in User.query.all()]
 
     def get_user(username): # SQLi Injection 
-        fin_query = User.query.filter_by(username=username).first()
+        user_query = f"SELECT * FROM users WHERE username = '{username}'"
+        query = db.session.execute(text(user_query))
+        ret = query.fetchone()
+        if ret:
+            fin_query = '{"username": "%s", "email": "%s"}' % (ret[1], ret[3])
+        else:
+            fin_query = None
         return fin_query
 
 
