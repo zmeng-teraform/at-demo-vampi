@@ -68,7 +68,7 @@ class User(db.Model):
     def get_user(username):
 	fin_query = User.query.filter_by(username=username).first()
         return fin_query
-	    
+
     @staticmethod
     def register_user(username, password, email, admin=False):
         new_user = User(username=username, password=password, email=email, admin=admin)
