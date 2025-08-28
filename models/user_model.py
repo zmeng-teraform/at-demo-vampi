@@ -82,7 +82,6 @@ class User(db.Model):
         done = User.query.filter_by(username=username).delete()
         db.session.commit()
         return done
-        return fin_query
 
     @staticmethod
     def init_db_users():
