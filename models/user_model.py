@@ -1,3 +1,4 @@
+
 import datetime
 import jwt
 from sqlalchemy.orm import relationship
@@ -65,8 +66,18 @@ class User(db.Model):
     def get_all_users_debug():
         return [User.json_debug(user) for user in User.query.all()]
 
-    def get_user(username): # SQLi Injection 
-        fin_query = User.query.filter_by(username=username).first()
+    @staticmethod
+    def get_user(username):
+        if vuln:  # SQLi Injection
+            user_query = f"SELECT * FROM users WHERE username = '{username}'"
+            query = db.session.execute(text(user_query))
+            ret = query.fetchone()
+            if ret:
+                fin_query = '{"username": "%s", "email": "%s"}' % (ret[1], ret[3])
+            else:
+                fin_query = None
+        else:
+            fin_query = User.query.filter_by(username=username).first()
         return fin_query
 
     @staticmethod
@@ -88,3 +99,5 @@ class User(db.Model):
         User.register_user("name1", "pass1", "mail1@mail.com", False)
         User.register_user("name2", "pass2", "mail2@mail.com", False)
         User.register_user("admin", "pass1", "admin@mail.com", True)
+user_model.py
+Displaying user_model.py.
