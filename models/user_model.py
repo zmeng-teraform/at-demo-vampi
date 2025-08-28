@@ -65,7 +65,7 @@ class User(db.Model):
     def get_all_users_debug():
         return [User.json_debug(user) for user in User.query.all()]
 
-def get_user(username):
+    def get_user(username):
         if vuln:  # SQLi Injection
             user_query = f"SELECT * FROM users WHERE username = '{username}'"
             query = db.session.execute(text(user_query))
